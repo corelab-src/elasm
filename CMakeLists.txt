@@ -1,0 +1,96 @@
+cmake_minimum_required(VERSION 3.12)
+
+
+# VERSION SETTING
+
+if (NOT DEFINED HECATE_VERSION_MAJOR)
+  set(HECATE_VERSION_MAJOR 0)
+endif ()
+
+if (NOT DEFINED HECATE_VERSION_MINOR)
+  set(HECATE_VERSION_MINOR 1)
+endif ()
+
+if (NOT DEFINED HECATE_VERSION_PATCH)
+  set(HECATE_VERSION_PATCH 0)
+endif ()
+
+if (NOT DEFINED HECATE_VERSION_SUFFIX)
+  set(HECATE_VERSION_SUFFIX git)
+endif ()
+
+if (NOT PACKAGE_VERSION)
+  set(PACKAGE_VERSION
+    "${HECATE_VERSION_MAJOR}.${HECATE_VERSION_MINOR}.${HECATE_VERSION_PATCH}${HECATE_VERSION_SUFFIX}")
+endif()
+
+# PROJECT SETTING
+
+project(HECATE
+  VERSION ${HECATE_VERSION_MAJOR}.${HECATE_VERSION_MINOR}.${HECATE_VERSION_PATCH}
+  LANGUAGES CXX C)
+
+
+# CXX BUILD SETTING
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined")
+
+if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message(STATUS "No build type selected, default to Release")
+  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type (default Release)" FORCE)
+endif()
+
+string(TOUPPER "${CMAKE_BUILD_TYPE}" uppercase_CMAKE_BUILD_TYPE)
+
+if (CMAKE_BUILD_TYPE AND
+    NOT uppercase_CMAKE_BUILD_TYPE MATCHES "^(DEBUG|RELEASE|RELWITHDEBINFO|MINSIZEREL)$")
+  message(FATAL_ERROR "Invalid value for CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+endif()
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+# set(CMAKE_BUILD_TYPE Debug)
+
+# PACKAGE SETTING
+find_package(MLIR REQUIRED CONFIG)
+find_package(SEAL 4.0 REQUIRED CONFIG)
+
+# MLIR SETTING
+
+list(APPEND CMAKE_MODULE_PATH "${MLIR_CMAKE_DIR}")
+list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/modules")
+include(TableGen)
+include(AddLLVM)
+include(AddMLIR)
+include(AddHecate)
+include(HandleLLVMOptions)
+
+include_directories(${LLVM_INCLUDE_DIRS})
+include_directories(${MLIR_INCLUDE_DIRS})
+include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_BINARY_DIR}/include)
+link_directories(${LLVM_BUILD_LIBRARY_DIR})
+add_definitions(${LLVM_DEFINITIONS})
+
+set(LLVM_RUNTIME_OUTPUT_INTDIR ${CMAKE_BINARY_DIR}/bin)
+set(LLVM_LIBRARY_OUTPUT_INTDIR ${CMAKE_BINARY_DIR}/lib)
+set(MLIR_BINARY_DIR ${CMAKE_BINARY_DIR})
+
+# HECATE DIRECTORY
+
+add_compile_options(-fno-rtti)
+add_compile_options(-fno-exceptions)
+add_compile_options(-fPIC)
+add_definitions (-DMEM_CHECK)
+
+add_subdirectory (include/hecate)
+add_subdirectory (lib)
+add_subdirectory (tools)
+
+
+

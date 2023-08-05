@@ -1,0 +1,3 @@
+add_hecate_interface(PolyTypeInterface ckks)
+add_hecate_dialect(CKKSOps ckks)
+add_dependencies(HecateCKKSOpsIncGen HecatePolyTypeInterfaceIncGen)

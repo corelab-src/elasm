@@ -1,0 +1,17 @@
+# set(LLVM_TARGET_DEFINITIONS HEParameterInterface.td)
+# mlir_tablegen(ScaleTypeInterface.h.inc -gen-type-interface-decls)
+# mlir_tablegen(ScaleTypeInterface.cpp.inc -gen-type-interface-defs)
+# mlir_tablegen(ScaleOpInterface.h.inc -gen-op-interface-decls)
+# mlir_tablegen(ScaleOpInterface.cpp.inc -gen-op-interface-defs)
+# add_public_tablegen_target(HECATEScaleInterfacesIncGen)
+
+add_hecate_interface(HEParameterInterface earth)
+add_hecate_interface(ForwardManagementInterface earth)
+add_hecate_dialect(EarthOps earth)
+add_hecate_pattern(EarthCanonicalizer earth)
+add_dependencies(HecateEarthOpsIncGen HecateHEParameterInterfaceIncGen)
+
+# set(LLVM_TARGET_DEFINITIONS ArithOps.td)
+# mlir_tablegen(ArithOp.h.inc -gen-op-decls)
+# mlir_tablegen(ArithOp.cpp.inc -gen-op-defs)
+# add_public_tablegen_target(HECATEArithOpsIncGen)

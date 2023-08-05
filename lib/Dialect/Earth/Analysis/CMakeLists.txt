@@ -1,0 +1,12 @@
+add_mlir_dialect_library(EarthAnalysis
+  ScaleManagementUnit.cpp
+  AutoDifferentiation.cpp
+  DEPENDS
+  HecateEarthOpsIncGen
+  HecateEarthTransformsIncGen
+  LINK_LIBS
+  PUBLIC
+  EarthDialect
+  MLIRIR
+  MLIRAnalysis
+  )

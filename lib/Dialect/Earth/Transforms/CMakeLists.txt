@@ -1,0 +1,23 @@
+add_mlir_dialect_library(EarthTransforms
+  WaterlineRescaling.cpp
+  ElideConstant.cpp
+  PrivatizeConstant.cpp
+  Common.cpp
+  UpscaleBubbling.cpp
+  EarlyModswitch.cpp
+  SMUChecker.cpp
+  SNRRescaling.cpp
+  ProactiveRescaling.cpp
+  ScaleManagementScheduler.cpp
+  ELASMExplorer.cpp
+  SMUEmbedding.cpp
+  ErrorEstimator.cpp
+  LatencyEstimator.cpp
+  DEPENDS
+  HecateEarthTransformsIncGen
+  LINK_LIBS
+  PUBLIC
+  EarthDialect
+  EarthAnalysis
+  MLIRIR
+  )
