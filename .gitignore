@@ -20,6 +20,8 @@ dot
 *.nsys-rep
 *.sqlite
 !.gitignore
+!requirements.txt
+!versions.txt
 python/hecate/dist
 python/hecate/hecate.egg-info
 examples/optimized

@@ -1,0 +1,4 @@
+python=3.10.12
+llvm-project=llvmorg-16.0.0
+cmake=3.22.1
+SEAL=4.0.0
