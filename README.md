@@ -15,9 +15,11 @@ Yongwoo Lee, Seonyeong Heo, Seonyoung Cheon, Shinnung Jeong, Changsu Kim, Eunkyu
 
 ### Requirements 
 Ninja   
+git  
 cmake >= 3.22.1  
-python >= 3.10
-clang,clang++ >= 14.0.0
+python >= 3.10  
+clang,clang++ >= 14.0.0  
+
 
 ### Install MLIR 
 ```bash
@@ -86,11 +88,14 @@ cmake --build build
 ```
 ### Configure Hecate 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
 source config.sh 
 ```
 
 ### Install Hecate Python Binding 
 ```bash
+pip install -r requirements.txt
 ./install.sh
 ```
 
