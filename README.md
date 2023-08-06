@@ -17,15 +17,16 @@ Yongwoo Lee, Seonyeong Heo, Seonyoung Cheon, Shinnung Jeong, Changsu Kim, Eunkyu
 Ninja   
 cmake >= 3.22.1  
 python >= 3.10
+clang,clang++ >= 14.0.0
 
 ### Install MLIR 
 ```bash
 git clone https://github.com/llvm/llvm-project.git
-git checkout llvmorg-16.0.0
 cd llvm-project
-cmake -GNinja -Bbuild \                                                                                                                                   
+git checkout llvmorg-16.0.0
+cmake -GNinja -Bbuild \
   -DCMAKE_C_COMPILER=clang \
-  -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release\
+  -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release \
   -DLLVM_ENABLE_PROJECTS=mlir -DLLVM_INSTALL_UTILS=ON \
   -DLLVM_TARGETS_TO_BUILD=host \
   llvm
@@ -36,9 +37,9 @@ cd ..
 #### Optional : Install Directory  to maintain multiple versions or a debug build 
 ```bash
 git clone https://github.com/llvm/llvm-project.git
-git checkout llvmorg-16.0.0
 cd llvm-project
-cmake -GNinja -Bbuild \                                                                                                                                   
+git checkout llvmorg-16.0.0
+cmake -GNinja -Bbuild \ 
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release\
   -DLLVM_ENABLE_PROJECTS=mlir -DLLVM_INSTALL_UTILS=ON \
