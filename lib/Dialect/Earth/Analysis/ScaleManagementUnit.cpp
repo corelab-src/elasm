@@ -345,6 +345,8 @@ bool hecate::ScaleManagementUnit::inNoisyGroup(mlir::Value v) const {
 
 bool hecate::ScaleManagementUnit::isInvalidated(
     const mlir::AnalysisManager::PreservedAnalyses &) {
+  // Before fix SMU to handle allow scale management op,
+  // We need to invalidate smu always.
   detach();
   return true;
 }

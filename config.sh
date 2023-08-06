@@ -1,4 +1,4 @@
-export HECATE=$( cd -- "$( dirname -- "$0" )" &> /dev/null && pwd )
+export HECATE=$( cd -- "$( dirname -- "$BASH_SOURCE[0]" )" &> /dev/null && pwd )
 
 alias hopt=$HECATE/build/bin/hecate-opt
 alias hopt-debug=$HECATE/build-debug/bin/hecate-opt
