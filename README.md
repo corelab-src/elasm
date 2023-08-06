@@ -1,25 +1,34 @@
 # hecate-compiler
-Homomorphic Encryption Compiler for Arithmetic TEnsor computation 
+Hecate (Homomorphic Encryption Compiler for Approximate TEnsor computation) is an optimizing compiler for the CKKS FHE scheme, built by Compiler Optimization Research Laboratory (Corelab) @ Yonsei University. 
+Hecate is built on the top of Multi-Level Intermediate Representation (MLIR) compiler framework. 
+We aim to support privacy-preserving machine learning and deep learning applications. 
 
-## Papers 
-**ELASM: Error-Latency-Aware Scale Management for Fully Homomorphic Encryption** [[abstract](https://www.usenix.org/conference/usenixsecurity23/presentation/lee-yongwoo)]   
-Yongwoo Lee, Seonyoung Cheon, Dongkwan Kim, Dongyoon Lee, and Hanjun Kim  
-*32nd USENIX Security Symposium (USENIX Security)*, August 2023. 
-[[Prepublication](https://www.usenix.org/system/files/sec23fall-prepub-147-lee-yongwoo.pdf)]
 
-**HECATE: Performance-Aware Scale Optimization for Homomorphic Encryption Compiler**\[[IEEE Xplore](http://doi.org/10.1109/CGO53902.2022.9741265)]   
-Yongwoo Lee, Seonyeong Heo, Seonyoung Cheon, Shinnung Jeong, Changsu Kim, Eunkyung Kim, Dongyoon Lee, and Hanjun Kim  
-*Proceedings of the 2022 International Symposium on Code Generation and Optimization (CGO)*, April 2022. 
-[[Prepublication](http://corelab.or.kr/Pubs/cgo22_hecate.pdf)]
+  * [Installation](#installation)
+    + [Requirements](#requirements)
+    + [Install MLIR](#install-mlir)
+    + [Install SEAL](#install-seal)
+    + [Build Hecate](#build-hecate)
+    + [Configure Hecate](#configure-hecate)
+    + [Install Hecate Python Binding](#install-hecate-python-binding)
+  * [Tutorial](#tutorial)
+    + [Trace the example python file to Encrypted ARiTHmetic IR](#trace-the-example-python-file-to-encrypted-arithmetic-ir)
+    + [Compile the traced Earth Hecate IR](#compile-the-traced-earth-ir)
+    + [Test the optimized code](#test-the-optimized-code)
+    + [One-liner for compilation and testing](#one-liner-for-compilation-and-testing)
+  * [Papers](#papers)
+  * [Citations](#citations)
+
 ## Installation 
 
 ### Requirements 
+```
 Ninja   
 git  
 cmake >= 3.22.1  
 python >= 3.10  
 clang,clang++ >= 14.0.0  
-
+```
 
 ### Install MLIR 
 ```bash
@@ -101,7 +110,7 @@ pip install -r requirements.txt
 
 ## Tutorial 
 
-### Trace the example python file 
+### Trace the example python file to Encrypted ARiTHmetic IR 
 
 ```bash
 hc-trace <example-name>
@@ -111,7 +120,7 @@ e.g.,
 hc-trace MLP
 ```
 
-### Compile the traced Encrypted ARiTHmetic (Earth) Hecate IR 
+### Compile the traced Earth IR 
 
 ```bash
 hopts <eva|elasm> <waterline:integer> <example-name>
@@ -147,6 +156,17 @@ With printing pass timings :
 ```bash
 hcott <eva|elasm> <waterline:integer> <example-name>
 ```
+## Papers 
+
+**ELASM: Error-Latency-Aware Scale Management for Fully Homomorphic Encryption** [[abstract](https://www.usenix.org/conference/usenixsecurity23/presentation/lee-yongwoo)]   
+Yongwoo Lee, Seonyoung Cheon, Dongkwan Kim, Dongyoon Lee, and Hanjun Kim  
+*32nd USENIX Security Symposium (USENIX Security)*, August 2023. 
+[[Prepublication](https://www.usenix.org/system/files/sec23fall-prepub-147-lee-yongwoo.pdf)]
+
+**HECATE: Performance-Aware Scale Optimization for Homomorphic Encryption Compiler**\[[IEEE Xplore](http://doi.org/10.1109/CGO53902.2022.9741265)]   
+Yongwoo Lee, Seonyeong Heo, Seonyoung Cheon, Shinnung Jeong, Changsu Kim, Eunkyung Kim, Dongyoon Lee, and Hanjun Kim  
+*Proceedings of the 2022 International Symposium on Code Generation and Optimization (CGO)*, April 2022. 
+[[Prepublication](http://corelab.or.kr/Pubs/cgo22_hecate.pdf)]
 
 ## Citations 
 ```bibtex
