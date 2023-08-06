@@ -142,6 +142,27 @@ With printing pass timings :
 hcott <eva|elasm> <waterline:integer> <example-name>
 ```
 
-
- 
+## Citations 
+```bibtex
+@INPROCEEDINGS{lee:hecate:cgo,
+  author={Lee, Yongwoo and Heo, Seonyeong and Cheon, Seonyoung and Jeong, Shinnung and Kim, Changsu and Kim, Eunkyung and Lee, Dongyoon and Kim, Hanjun},
+  booktitle={2022 IEEE/ACM International Symposium on Code Generation and Optimization (CGO)}, 
+  title={HECATE: Performance-Aware Scale Optimization for Homomorphic Encryption Compiler}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={193-204},
+  doi={10.1109/CGO53902.2022.9741265}}
+```
+```bibtex
+@INPROCEEDINGS{lee:elasm:sec,
+  title={{ELASM}: Error-Latency-Aware Scale Management for Fully Homomorphic Encryption},
+  author={Lee, Yongwoo and Cheon, Seonyoung and Kim, Dongkwan and Lee, Dongyoon and Kim, Hanjun},
+  booktitle={{32nd} USENIX Security Symposium (USENIX Security 23)},
+ year={2023},
+ address = {Aneheim, CA},
+ publisher = {USENIX Association},
+ month = aug
+}
+```
 
