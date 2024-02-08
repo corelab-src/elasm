@@ -6,6 +6,7 @@ import re
 import inspect
 from subprocess import Popen
 from collections.abc import Iterable
+from platform import system
 # import torch
 
 import os
@@ -24,7 +25,15 @@ if not hecateBuild.is_dir() : # We expect that this is library path
     hecateBuild  = hecate_dir
 
 libpath = hecateBuild / "lib"
-lw = ctypes.CDLL(libpath / "libSEAL_HEVM.so")
+libname = libpath
+osname = system()
+if osname == 'Linux':
+    libname = libpath / "libSEAL_HEVM.so"
+elif osname == 'Darwin':
+    libname = libpath / "libSEAL_HEVM.dylib"
+else:
+    raise UnsupportedPlatform
+lw = ctypes.CDLL(libname)
 os.environ['PATH'] = str(libpath) + os.pathsep + os.environ['PATH']
 
 
@@ -106,6 +115,7 @@ class HEVM :
         if not isinstance(data, np.ndarray) :
             data = np.array(data, dtype=np.float64)
         carr = data.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+        print(data)
         lw.encrypt(self.vm, i, carr, len(data))
 
     def setDebug (self, enable) : 
