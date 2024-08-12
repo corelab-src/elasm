@@ -156,12 +156,21 @@ With printing pass timings :
 ```bash
 hcott <eva|elasm> <waterline:integer> <example-name>
 ```
+
+## DaCapo Source Code
+The compiler DaCapo, which supports automatic bootstrapping placement for CKKS, has been placed in a separate repository
+due to license issue. You can find more details in the [DaCapo Repository](https://github.com/corelab-src/dacapo).
+
 ## Papers 
+**DaCapo: Automatic Bootstrapping Management for Efficient Fully Homomorphic Encryption**\
+Seonyoung Cheon, Yongwoo Lee, Ju Min Lee, Dongkwan Kim, Sunchul Jung, Taekyung Kim, Dongyoon Lee, and Hanjun Kim
+*33rd USENIX Security Symposium (USENIX Security)*, August 2024.
+[[Prepublication](https://www.usenix.org/system/files/sec24summer-prepub-336-cheon.pdf)]
 
 **ELASM: Error-Latency-Aware Scale Management for Fully Homomorphic Encryption** [[abstract](https://www.usenix.org/conference/usenixsecurity23/presentation/lee-yongwoo)]   
 Yongwoo Lee, Seonyoung Cheon, Dongkwan Kim, Dongyoon Lee, and Hanjun Kim  
 *32nd USENIX Security Symposium (USENIX Security)*, August 2023. 
-[[Prepublication](https://www.usenix.org/system/files/sec23fall-prepub-147-lee-yongwoo.pdf)]
+[[Prepublication](https://www.usenix.org/system/files/usenixsecurity23-lee-yongwoo.pdf)]
 
 **HECATE: Performance-Aware Scale Optimization for Homomorphic Encryption Compiler**\[[IEEE Xplore](http://doi.org/10.1109/CGO53902.2022.9741265)]   
 Yongwoo Lee, Seonyeong Heo, Seonyoung Cheon, Shinnung Jeong, Changsu Kim, Eunkyung Kim, Dongyoon Lee, and Hanjun Kim  
@@ -186,9 +195,19 @@ Yongwoo Lee, Seonyeong Heo, Seonyoung Cheon, Shinnung Jeong, Changsu Kim, Eunkyu
   author={Lee, Yongwoo and Cheon, Seonyoung and Kim, Dongkwan and Lee, Dongyoon and Kim, Hanjun},
   booktitle={{32nd} USENIX Security Symposium (USENIX Security 23)},
  year={2023},
- address = {Aneheim, CA},
+ address = {Anaheim, CA},
  publisher = {USENIX Association},
  month = aug
 }
 ```
-
+```bibtex
+@INPROCEEDINGS{cheon:dacapo:sec,
+  title={{DaCapo}: Automatic Bootstrapping Management for Efficient Fully Homomorphic Encryption},
+  author={Cheon, Seonyoung and Lee, Yongwoo and Kim, Dongkwan and Lee, Ju Min and Jung, Sunchul and Kim, Taekyung and Lee, Dongyoon and Kim, Hanjun},
+  booktitle={{33rd} USENIX Security Symposium (USENIX Security 24)},
+ year={2024},
+ address = {Philadelphia, CA},
+ publisher = {USENIX Association},
+ month = aug
+}
+```
