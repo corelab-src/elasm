@@ -35,6 +35,7 @@ clang,clang++ >= 14.0.0
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
 git checkout llvmorg-16.0.0
+# To build HECATE on macOS, please add `-DLLVM_BUILD_LLVM_DYLIB=ON`.
 cmake -GNinja -Bbuild \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release \

@@ -4,6 +4,7 @@ import re
 import inspect
 from subprocess import Popen
 from collections.abc import Iterable
+from platform import system
 # import torch
 
 import os
@@ -15,7 +16,15 @@ hecate_dir = os.environ["HECATE"]
 hecateBuild = hecate_dir+"/build"
 heaan_keyset = "/heaan_keyset"
 libpath = hecateBuild + "/lib/"
-lt = ctypes.CDLL(libpath+"libHecateFrontend.so")
+libname = libpath
+osname = system()
+if osname == 'Linux':
+    libname = libpath + "libHecateFrontend.so"
+elif osname == 'Darwin':
+    libname = libpath + "libHecateFrontend.dylib"
+else:
+    raise UnsupportedPlatform
+lt = ctypes.CDLL(libname)
 os.environ['PATH'] = libpath + os.pathsep + os.environ['PATH']
 
 

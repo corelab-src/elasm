@@ -36,7 +36,11 @@ project(HECATE
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined")
+if (NOT DEFINED CMAKE_OSX_ARCHITECTURES)
+  set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined")
+else()
+  set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-undefined,error")
+endif()
 
 if (NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message(STATUS "No build type selected, default to Release")
